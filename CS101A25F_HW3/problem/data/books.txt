@@ -1,0 +1,8 @@
+978-0-7432-7356-5|The Da Vinci Code|Dan Brown|Mystery|2003|0|M001|
+978-0-553-29698-2|A Brief History of Time|Stephen Hawking|Science|1988|1||
+978-0-06-112008-4|To Kill a Mockingbird|Harper Lee|Fiction|1960|0|M002|
+978-0-452-28423-4|1984|George Orwell|Dystopian|1949|1||
+978-0-7432-4722-4|The Great Gatsby|F. Scott Fitzgerald|Classic|1925|1||
+978-0-316-76948-0|The Catcher in the Rye|J.D. Salinger|Fiction|1951|1||
+978-0-14-028333-4|Pride and Prejudice|Jane Austen|Romance|1813|1||
+978-0-7432-7357-2|Angels and Demons|Dan Brown|Mystery|2000|0|M004|
