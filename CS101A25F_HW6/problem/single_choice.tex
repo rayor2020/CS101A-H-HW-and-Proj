@@ -1,0 +1,106 @@
+\titledquestion{Single Choice}
+
+\begin{parts}
+
+\part[2] Choose the \textit{incorrect} statement about tree.
+\begin{choices}
+  \choice Nodes with the same parent are siblings
+  \choice Leaf nodes always have a degree equal to 0.
+  \choice A tree of depth 2 has a maximum of 7 nodes.
+  \choice Each node, other than the root, has exactly one node pointing to it.
+\end{choices}
+
+\part[2] Choose the correct statement.
+\begin{choices}
+  \choice We can use a stack to get the breadth-first traversal result of a tree.
+  \choice The BFS result of the figure below is ABHCDIGEFJK.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\linewidth]{imgs/q1-2.png}
+\end{figure}
+
+  \choice The memory required by DFS is  $\Theta(n)$.
+  \choice The time complexity of BFS and DFS are both $\Theta(n)$.
+\end{choices}
+
+
+\part[2] Which traversals of the left tree and right tree, will produce the same sequence node name?
+
+\begin{minipage}{1\textwidth}
+\centering
+\begin{tikzpicture}
+\Tree
+[.A
+[.B
+        \edge[blank]; \node[blank]{};
+        \edge[];[.D
+            \edge[];[.G
+            ]
+            \edge[]; [.H
+            ]
+        ]
+    ]
+    [.C
+        \edge[];[.E
+            \edge[blank]; \node[blank]{};
+            \edge[];[.I
+            ]
+        ]
+        \edge[];[.F
+             \edge[];[.J            ]
+             \edge[blank]; \node[blank]{};
+            ]
+        ]
+    ]
+\end{tikzpicture}
+\begin{tikzpicture}
+\Tree
+[.F
+    [.E
+            \edge[];[.H
+                \edge[];[.B ]
+                \edge[];[.D
+                \edge[blank]; \node[blank]{};
+                    \edge[];[.G 
+                        ] 
+                    ]
+            ]
+            \edge[]; [.A
+            ]
+        ]
+        [.J
+        \edge[];[.I
+        ]
+        \edge[];[.C
+        ]
+        ]
+    ]
+\end{tikzpicture}
+\end{minipage} \\
+
+\begin{choices}
+  \choice  left: Post-order, right: Pre-order 
+  \choice  left: In-order, right: Pre-order 
+  \choice  left: Post-order, right: In-order
+  \choice  left: In-order, right: Post-order 
+\end{choices}
+
+\part[2] Choose the \textit{incorrect} statement about Huffman coding.
+\begin{choices}
+  \choice Huffman coding prioritize characters based on their frequencies in text.
+  \choice If character $a$ has a higher frequency than $b$, then the encoded $a$ has a length no longer than encoded $b$.
+  \choice No code is a prefix of another code.
+  \choice Given the set of characters and the \textbf{order} of their frequencies but the exact frequencies unknown, we can still determine the length of each encoded character.
+\end{choices}
+
+
+\part[2] Choose the correct statement about binary search tree.
+\begin{choices}
+  \choice Almost all of the relevant operations on a binary search tree are $O(h)$, where $h$ is the height of the tree.
+  \choice When deleting a node with two children, we first replace it with the smallest node on the right sub-tree or the smallest node on the left sub-tree.
+  \choice Given an array, suppose we construct a BST (without balancing) by sequentially inserting the elements of the array into an empty BST. Then the time complexity of this process is $O(n \log n)$ in all cases.
+  \choice The in-fix order traversal of a BST is an array of descending order.
+\end{choices}
+
+
+\end{parts}

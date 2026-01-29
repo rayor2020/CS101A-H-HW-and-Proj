@@ -1,0 +1,461 @@
+\documentclass[12pt]{article}
+% \documentclass[14pt]{extarticle}
+% --- Page & text block (wider) ---
+\usepackage[a4paper,margin=1.8cm,heightrounded]{geometry}
+\usepackage[UTF8, fontset=adobe]{ctex}
+% --- Fonts & micro-typography ---
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{xcolor}
+% --- Line spacing & paragraph style ---
+\usepackage{setspace}
+\setstretch{1.12}
+\usepackage{parskip}
+\setlength{\parskip}{0.5em}
+\usepackage{multicol}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+% 可选参数控制宽度，默认为 2.4cm
+\newcommand{\ans}[1][2.4cm]{\fbox{\rule{0pt}{3.8ex}\hspace{#1}}}
+\newcommand{\anslong}[1][7cm]{\fbox{\rule{0pt}{3.8ex}\hspace{#1}}}
+\newcommand{\ansultra}[1][17cm]{\fbox{\rule{0pt}{20.8ex}\hspace{#1}}}
+\usepackage{smile}
+
+% --- Lists ---
+\usepackage{enumitem}
+\setlist{leftmargin=*, itemsep=0.3em, topsep=0.4em}
+\setlist[itemize]{itemsep=0.2em, topsep=0.2em, parsep=0em}
+
+% --- Section spacing ---
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.0ex plus .5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.8ex}{0.4ex}
+\titlespacing*{\subsubsection}{0pt}{0.6ex}{0.3ex}
+
+% --- Header/footer ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{CS101A(H) Week 8}
+\rhead{bubble sort, insertion sort, merge sort, quick sort}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- Links ---
+\usepackage[hidelinks]{hyperref}
+\setlist[enumerate]{itemsep=0.2em, topsep=0.2em, parsep=0em}
+\usepackage{titling}
+\setlength{\droptitle}{-3em} 
+\begin{document}
+
+\title{CS101A(H) Homework 5}
+
+\date{}
+\vspace{-10em}
+\maketitle
+\vspace{-5em}
+\section*{Brief Overview}
+This homework consists of four parts:  
+
+\begin{itemize}
+  \item \textbf{Single Choices (10 pts):} \textit{Scoring per question:}
+  \begin{itemize}
+    \item Select the single correct option to receive full credit.
+    \item Any wrong selection, selecting multiple options, or leaving it blank receives \textbf{0 pt}.
+  \end{itemize}
+
+  \item \textbf{Multiple Choices (15 pts):} \textit{Scoring per question:}
+  \begin{itemize}
+    \item Selecting \emph{all and only} the correct options: \textbf{full credit}.
+    \item Selecting a \emph{proper subset} of the correct options (and \emph{no} incorrect options): \textbf{half credit}.
+    \item Selecting \emph{any} incorrect option or leaving it blank: \textbf{0 pt}.
+  \end{itemize}
+  \textit{Note:} If the correct set has only one option, the "half credit for a proper subset" case does not apply.
+
+  \item \textbf{Others (8+4+6+12 = 30 pts):} \textbf{Answers must be written in English}. The answer format varies by problem (e.g., short proofs, derivations, explanations, code snippets). The point value for each subproblem is printed next to the problem title. Follow the instructions given in each problem; show key steps when requested.
+\end{itemize}
+
+Your grade for this homework will be computed as
+\[
+\min\bigl(\text{Single Choices}+\text{Multiple Choices} + \text{Others},\; 50 \text{ pts}\bigr) .
+\]
+
+\textbf{Notes: } \textbf{Unless otherwise stated, always express your final asymptotic bounds using} \(\boldsymbol{\Theta(\cdot)}\) \textbf{notation for tight complexity, not just} \(O(\cdot)\) \textbf{or} \(\Omega(\cdot)\).  
+All answers must be written \textbf{inside the provided answer boxes} and \textbf{in English}. When submitting, match your solutions to the problems correctly in Gradescope. No late submission will be accepted. Failure to follow these rule may result in partial or full loss of credit.
+
+
+
+\paragraph{Usage of AI.}
+The use of AI tools for searching information or obtaining assistance on this homework is strictly prohibited. All solutions must be derived from your own understanding and effort. Submissions will be reviewed carefully, and any indication of reliance on AI-generated content will result in severe penalties.
+
+\paragraph{Academic Integrity.}
+This course upholds the highest standards of academic integrity. Any form of academic dishonesty, including plagiarism, unauthorized collaboration, or the use of prohibited resources such as AI tools, will be treated as a serious violation. Such actions not only undermine your own learning but also violate university policies. 
+
+\paragraph{Due Date:} Nov 11, 2025, \textbf{8:00~PM}
+\newpage
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
+        \hline
+        (1.1) & (1.2) & (1.3) & (1.4) & (1.5)\\
+        \hline
+ 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		% YOUR ANSWER HERE.
+		   &  &  &    &  \\
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \hline
+        (2.1) & (2.2) & (2.3) & (2.4) & (2.5)\\
+        \hline
+ 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		% YOUR ANSWER HERE.
+		   &  &  &    &  \\
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{Single Choices}
+\noindent\textbf{1. You have to sort $n$ data with very limited extra memory ($\Theta(1)$ extra memory every case).  Choose sort algorithm(s) which is(are) appropriate.}
+
+(1) merge sort, (2) insertion sort (3) bubble sort (4) quick sort
+\begin{enumerate}[label=\Alph*.]
+  \item (1)(2)
+  \item (1)(2)(3)
+  \item (2)(3)
+  \item (2)(3)(4)
+  \item (2)(4).
+\end{enumerate}
+
+
+\noindent\textbf{2. In merge sort, if the merge function uses $if \; (a1[i1] < a2[i2]) $ and otherwise takes the element from the right array. What is the stability of this implementation?}
+\begin{enumerate}[label=\Alph*.]
+  \item Stable.
+  \item Unstable.
+  \item Stable only when the two sub-arrays have same number of inversions .
+  \item Stable only when the two sub-arrays are of equal length.
+\end{enumerate}
+
+
+
+\noindent\textbf{3. Using half-open intervals $[first, last)$ with $mid = (first + last)/2$, which combination of calls is correct?}
+
+\begin{enumerate}[label=\Alph*.]
+  \item  merge\_sort(first, mid); merge\_sort(mid + 1, last); merge(first, mid + 1, last)
+  \item  merge\_sort(first, mid); merge\_sort(mid, last); merge(first, mid, last)
+  \item merge\_sort(first, mid - 1); merge\_sort(mid, last); merge(first, mid - 1, last)
+  \item  merge\_sort(first, last - 1); merge\_sort(last - 1, last); merge(first, last - 1, last)
+\end{enumerate}
+
+
+
+\noindent\textbf{4. What is the expected number of pairs of inversions in an array of length $n$?}
+\begin{multicols}{5}
+\begin{enumerate}[label=\Alph*.]
+  \item \(\Theta(n)\)
+  \item \(\Theta(n^2)\)
+  \item \(\Theta(n \log n)\)
+  \item \(\Theta(\log (n!))\)
+\end{enumerate}
+\end{multicols}
+
+
+
+
+\noindent\textbf{5. Which of the following is correct?}
+   \begin{enumerate}[label=\Alph*.]
+    \item When array A contains distinct elements and is arranged in descending order, the time complexity of quick sort(always choose the last element as pivot) is $\Theta(n^2)$.
+  \item All sorting algorithms must be $\omega(n)$.
+  \item Any comparison-based sorting algorithm can be represented by a comparison tree. Worst-case running time can be less than the height of the tree
+  \item There doesn't exist a sorting algorithm takes $\theta((n+1)!)$ time.
+\end{enumerate} 
+
+
+
+
+\section{Multiple Choices}
+\noindent\textbf{1. In the lecture we have learned that different sorting algorithms are suitable for different scenarios. Which of the following statements is/are suitable for insertion sort?}
+\begin{enumerate}[label=\Alph*.]
+  \item Each element of the array is close to its final sorted position.
+  \item The length of the array is small.
+  \item The sorting must be performed in place.
+  \item Comparisons are more expensive than writes or swaps.
+\end{enumerate}
+
+
+
+\noindent\textbf{2. Which of the following sorting algorithm(s) is(are) stable?}
+\begin{enumerate}[label=\Alph*.]
+  \item  Insertion sort.
+  \item  Merge sort.
+  \item  Quick sort.
+  \item  Flagged bubble sort.
+\end{enumerate}
+
+
+
+\noindent\textbf{3. Which of the following situations are true for an array of $n$ random numbers?}
+\begin{enumerate}[label=\Alph*.]
+  \item The number of inversions in this array can be found by applying a
+recursive algorithm adapted from merge-sort in $\Theta(n \log n)$ time.
+  \item  If it has no more than $ n$ inversions, it can be sorted in $O(n)$ time.
+  \item  If the array is ⟨8, 6, 3, 7, 4⟩, there are 6 inversions.
+  \item If all elements of the array are the same, the time complexity of quick sort is $\Theta(n\log n)$.
+  \item Given 2 sorted lists of size $m$ and $n$ respectively, and we want to merge them to one sorted list by mergesort. Then in the worst case, we need $ m + n - 1 $ comparisons.
+\end{enumerate}
+
+
+
+\noindent\textbf{4. The time complexity for both insertion sort and flagged bubble sort will be the same if:}
+
+\begin{enumerate}[label=\Alph*.]
+  \item the input array is reversely sorted.
+  \item the input array is a list containing n copies of the same number.
+  \item the input array is already sorted.
+  \item the input array is a concatenation of two sorted subarrays.
+\end{enumerate}
+
+
+
+\noindent\textbf{5. Which of the following implementations of quick-sort may improve the average \textbf{behavior} (not only improvement on time complexity) of trivial quick-sort?(Compared to always picking the first element as pivot and using no optimization, data are uniformly distributed.)}
+
+\begin{enumerate}[label=\Alph*.]
+  \item Always picking the last element.
+
+  \item When partitioning the subarray \(\langle a_l,\cdots,a_r\rangle\) (assuming \(r-l\geqslant 2\)), choose the median of \(\left\{a_x,a_y,a_z\right\}\) as the pivot, where \(x,y,z\) are three different indices chosen randomly from \(\{l,l+1,\cdots,r\}\).
+  
+  \item When partitioning the subarray \(\langle a_l,\cdots,a_r\rangle\) (assuming \(r-l\geqslant 2\)), we first calculate \(q = \frac{1}{2} (a_{\max} + a_{\min})\) where \(a_{\max}\) and \(a_{\min}\) are the maximum and minimum values in the current subarray respectively. Then we traverse the whole subarray to find \(a_m \; s.t. \left|a_m - q\right| = \min_{i=l}^r \left|a_i - q\right|\) and choose \(a_m\) as the pivot.
+
+  \item When the disordered sub-array is short enough, use insertion-sort instead of quick-sort.
+\end{enumerate}
+
+
+
+
+\newpage
+\section{Sort Practice (8 pts)}
+\noindent\textbf{(a) Run Insertion Sort for array $\{1,6,2,7,8,3,5,4\}$. Write down the array \textbf{after each} outer iteration. (2 pts)}
+\begin{verbatim}
+        for(int k = 1; k < n; k++){
+            for(int j = k; j > 0; j--){
+                if( array[j- 1] > array[j] )
+                    swap(array[j- 1], array[j]);
+                else
+                    break;
+                }
+            print(array);
+        }
+\end{verbatim}
+\[
+\fbox{\rule{0pt}{25.8ex}\hspace{17cm}}
+\]
+
+\medskip
+\noindent\textbf{(b) From list (diagram) to arrays (fill numbers). (2 pts)}\\
+Run flagged bubble Sort for the array in (a). Write down the array \textbf{after each} outer iteration.
+\begin{verbatim}
+        for(int i = n-1; i > 0; i--){
+            int max_t = array[0];
+            bool sorted = true;
+            for(int j = 1; j <= i; j++){
+                if(array[j] < max_t){
+                    array[j-1] = array[j];
+                    sorted = false;
+                }
+                else{
+                    array[j-1] = max_t;
+                    max_t = array[j];
+                }
+            }
+            array[i] = max_t;
+            print(array);
+            if (sorted)
+                break;
+        }
+\end{verbatim}
+\[
+\fbox{\rule{0pt}{25.8ex}\hspace{17cm}}
+\]
+
+\noindent\textbf{(c) (2 pts)} Run Merge Sort for this array. Write down the array \textbf{after} each merge and underline the sub-array being merged. Note that insertion sort are only used when for sub-array of size 2 or less. \\
+\[
+\fbox{\rule{0pt}{25.8ex}\hspace{17cm}}
+\]
+
+\noindent\textbf{(d) (2 pts)} Run Quick Sort for this array. Choose the last entry as pivot in this question. Write down the array \textbf{after} each quick sort operation(move all entries smaller than the pivot to left and move all entries larger than the pivot to right, then move the pivot. Please refer to the implementation in ppt.) and underline the sub-array. Note that insertion sort are only used when for sub-array of size 2 or less.\\
+\[
+\fbox{\rule{0pt}{25.8ex}\hspace{17cm}}
+\]
+
+\newpage
+\section{Insertion Sort using Linked List (4 pts)}
+We have learnt the insertion sort implementation using array. In this question, you are required to implement insertion sort using single linked list. Since it is not easy to traverse single linked list from back to front, we can traverse from front to back instead if it is needed.
+
+Fill in the blanks to complete the algorithm. Please note that there is at most one statement (ended with ;) in each blank line. 
+
+\begin{verbatim}
+struct ListNode 
+{
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(nullptr) {}
+};
+    
+ListNode* insertionSort(ListNode* head) {
+    //if linked list is empty or only contains 1 element, return directly
+    if(!head || !(head->next)){return head;}
+    
+    //create dummy node
+    ListNode *dummy = new ListNode(-1);
+    dummy->next = head;
+    
+    //split linked list into sorted list and unsorted list
+    ListNode *tail = head; //tail of sorted list
+    ListNode *sort = head->next; //head of unsorted list
+    
+    //insertion sort
+    while(sort)
+    {
+       if(sort->val < tail->val)
+       {
+           ListNode *ptr = dummy;
+           while(ptr->next->val < sort->val) ptr = ptr->next;
+           // Your code HERE!
+           // line1
+           // line2
+           // line3
+           // line4
+       }
+       else
+       {	//no need to insert
+           tail = tail->next;
+           sort = sort->next;
+       }
+    }
+    ListNode *ans = dummy->next;
+    delete dummy; dummy = nullptr;
+    return ans;
+}
+\end{verbatim}
+
+Fill: \\
+(1) \anslong \\
+(2) \anslong\\ 
+(3) \anslong \\
+(4) \anslong\\ 
+
+\newpage
+\section{Quick Sort (6 pts)}
+\noindent \textbf{(a)} (2 pt)If we use randomized quick-sort (i.e., randomly choosing pivots) to sort the array $[3,9,6,2,1,5,8,0]$, the probability of $2$ and $5$ being compared is \underline{\hspace{2cm}}.
+
+
+
+\noindent \textbf{(b)} 
+(4 pts) Fill in the blanks to complete the algorithm. Please note that there is at most one statement in each blank line. 
+
+\begin{verbatim}
+// Median-of-3: ensure a[first] <= a[mid] <= a[last-1],
+//then swap the median to the end as pivot
+template <typename T>
+T pick_pivot_median3(T* a, int first, int last) { // [first, last)
+    int mid = first + (last - first) / 2;
+    // TODO(1): after three swaps, ensure a[first] <= a[mid] <= a[last-1]
+    if (/* TODO(1a) */) std::swap(a[first], a[mid]);
+    if (/* TODO(1b) */) std::swap(a[first], a[last - 1]);
+    if (/* TODO(1c) */) std::swap(a[mid], a[last - 1]);
+    std::swap(a[mid], a[last - 1]);
+    return a[last - 1];
+}
+
+// Find in [i, last-1) the first index with a[index] >= pivot
+template <typename T>
+int find_next_ge(const T& pivot, T* a, int i, int last) {
+    while (/* TODO(2) */) {
+        ++i;
+    }
+    return i;
+}
+
+// Find in (first, j] the last index with a[index] < pivot 
+template <typename T>
+int find_prev_lt(const T& pivot, T* a, int j, int first) {
+    while (j > first && !(a[j] < pivot)) {
+        --j;
+    }
+    return j;
+}
+
+// Quicksort: sort the half-open range [first, last)
+template <typename T>
+void quick_sort(T* a, int first, int last) {
+    while (last - first > QS_INSERTION_THRESHOLD) {
+        // Choose pivot (median moved to a[last-1])
+        T pivot = pick_pivot_median3(a, first, last);
+
+        // Left keeps < pivot, right keeps >= pivot
+        int low  = find_next_ge(pivot, a, first, last);     
+        int high = find_prev_lt(pivot, a, last - 2, first); 
+
+        while (low < high) {
+            std::swap(a[low], a[high]);
+            ++low;
+            --high;
+            low  = /* TODO(3a) */;
+            high = /* TODO(3b) */;
+        }
+
+        // Place pivot into its final position;
+        std::swap(/* TODO(4a) */,/* TODO(4b) */);
+        int pivot_pos = low;
+
+        // Tail recursion elimination: recurse on the smaller side first
+        int left_size  = pivot_pos - first;
+        int right_size = last - (pivot_pos + 1);
+
+        if (left_size < right_size) {
+            if (left_size>1) quick_sort(a, first, pivot_pos);
+            first = pivot_pos+1;
+        } else {
+            if (right_size>1) quick_sort(a, pivot_pos + 1, last);
+            last = pivot_pos;
+        }
+    }
+
+    if (last - first > 1) {
+        insertion_sort(a, first, last);
+    }
+}
+\end{verbatim}
+Fill: \\
+(1a) \anslong 
+(1b) \anslong \\
+(1c) \anslong \\
+(2  ) \anslong\\ 
+(3a) \anslong 
+(3b) \anslong \\
+(4a) \anslong 
+(4b) \anslong \\
+
+\newpage
+\section{Choosing Appropriate Sorting Algorithms (12 pts)}
+For each of the following scenarios, choose a sorting algorithm (from either bubble sort, insertion sort, or merge sort) that best applies, and justify your choice. Each sort may be used more than once. If you find that multiple sorts could be appropriate for a scenario, identify their pros and cons, and choose the one that best suits the application. State and justify any assumptions you make. ``Best" should be evaluated by asymptotic running time.
+
+\noindent \textbf{(a)} Suppose you are given a data structure \texttt{D} maintaining an extrinsic order on n items, supporting two standard sequence operations: \texttt{D.get} at$(i)$ in worst-case $\Theta(1)$ time and \texttt{D.set} at$(i, x)$ in worst-case $\Theta(n \log n)$ time. Choose an algorithm to sort the items in \texttt{D} in place best.
+
+\[
+\fbox{\rule{0pt}{26.8ex}\hspace{17cm}}
+\]
+\noindent \textbf{(b)} Suppose you have a static array A containing pointers to n comparable objects, pairs of which take $\Theta(\log n)$ time to compare. Choose an algorithm to sort the pointers in A so that the pointed-to objects appear in non-decreasing order with minimum time cost.
+\[
+\fbox{\rule{0pt}{30.8ex}\hspace{17cm}}
+\]
+
+\newpage
+\noindent \textbf{(c)} Suppose you have a sorted array A containing $n$ integers. Now suppose someone performs some log log $n$ swaps between pairs of adjacent items in A so that A is no longer sorted. Choose an algorithm to best re-sort the integers in A.
+\[
+\fbox{\rule{0pt}{30.8ex}\hspace{17cm}}
+\]
+
+
+\end{document}

@@ -1,0 +1,106 @@
+% \documentclass[12pt, addpoints, answers]{exam}
+\documentclass[12pt, addpoints]{exam}
+
+\usepackage{amsmath, amssymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{drawstack}
+
+\usetikzlibrary{graphs}
+\tikzset{every tree node/.style={minimum width=2em,draw,circle},
+    blank/.style={draw=none},
+    edge from parent/.style=
+    {draw,edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}},
+    level distance=1.2cm}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+% For inserting code snippets.
+\usepackage{listings}
+\lstset{
+    columns = fixed,
+    basewidth = {0.5em},
+    breaklines = true,
+    backgroundcolor = \color{white},
+    keywordstyle = \color[RGB]{40, 40, 255},
+    numberstyle = \footnotesize\color{darkgray},
+    commentstyle = \ttfamily\color{violet},
+    basicstyle = \ttfamily,
+    stringstyle = \ttfamily\color[RGB]{128, 0, 0},
+    showstringspaces = false,
+    language = {[11]C++},
+    escapechar = \@
+}
+\lstnewenvironment{cpp}[1][]{\lstset{language = {[11]C++}, #1}}{}
+
+\renewcommand{\baselinestretch}{1.15}
+\setlength{\parskip}{1.25\baselineskip}
+
+% headers, footers, titles
+\title{CS101A(H) Homework 6}
+\author{}
+\date{Due date: December 2, 2025, at 20:00}
+
+% formats of questions, choices, points, etc.
+\qformat{\bf\thequestion. (\totalpoints\ points) \thequestiontitle\hfill}
+\pointname{'}
+\CorrectChoiceEmphasis{\bf\color{blue}}
+\SolutionEmphasis{\color{blue}}
+
+% We frequently use this font.
+\newcommand{\ttt}{\texttt}
+\newcommand{\bluett}[1]{\textcolor{blue}{\ttt{#1}}}
+
+\begin{document}
+
+\maketitle
+
+Your grade for this homework will be computed as
+\[
+\min\bigl(\text{Single Choices}+\text{Multiple Choices} + \text{Others},\; 50 \text{ pts}\bigr) .
+\]
+
+\textbf{Notes: } \textbf{Unless otherwise stated, always express your final asymptotic bounds using} \(\boldsymbol{\Theta(\cdot)}\) \textbf{notation for tight complexity, not just} \(O(\cdot)\) \textbf{or} \(\Omega(\cdot)\).  
+All answers must be written \textbf{inside the provided answer boxes} and \textbf{in English}. When submitting, match your solutions to the problems correctly in Gradescope. No late submission will be accepted. Failure to follow these rule may result in partial or full loss of credit.
+
+
+
+\paragraph{Usage of AI.}
+The use of AI tools for searching information or obtaining assistance on this homework is strictly prohibited. All solutions must be derived from your own understanding and effort. Submissions will be reviewed carefully, and any indication of reliance on AI-generated content will result in severe penalties.
+
+\paragraph{Academic Integrity.}
+This course upholds the highest standards of academic integrity. Any form of academic dishonesty, including plagiarism, unauthorized collaboration, or the use of prohibited resources such as AI tools, will be treated as a serious violation. Such actions not only undermine your own learning but also violate university policies. 
+
+\begin{questions}
+
+\newpage
+\include{single_choice}
+
+\newpage
+\include{multiple_choices}
+
+\newpage
+\include{run_dfs_and_bfs}
+
+\newpage
+\include{draw_a_tree}
+
+\newpage
+\include{Huffman}
+
+\newpage
+\include{avl}
+
+\end{questions}
+
+\end{document}

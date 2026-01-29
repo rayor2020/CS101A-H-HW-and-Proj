@@ -1,0 +1,52 @@
+\titledquestion{Multiple Choices}
+
+Each question has \textbf{one or more} correct answer(s). Select all the correct answer(s). For each question, you will get 0 points if you select one or more wrong answers, but you will get half points if you select a non-empty subset of the correct answers.
+
+\begin{parts}
+
+\part[3] Choose the correct statement(s) about tree.
+\begin{choices}
+  \choice The length of a path is number of nodes in the path.
+  \choice There is only one root in a tree.
+  \choice The degree of a node is positive.
+  \choice For every node in the tree, there is one parent node.
+  \choice The height of a binary tree is always positive.
+\end{choices}
+
+\part[3] Choose the correct statement(s) about binary tree whose height is $h$, where $h$ greater than 3.
+\begin{choices}
+  \choice  Suppose it is a perfect binary tree with $l$ leaf nodes, then this tree has $l-1$ internal nodes.
+  \choice  Suppose it is a complete tree whose left sub-tree has $n$ nodes, then the range of $n$ is between $2^{h-1}+1 $ and $2^h$.
+  \choice  Suppose it is a full binary tree, the number of nodes is always no less than $2^{h}$.
+  \choice If the result of in-order traversal of an expression tree is $3\times 4 \times 5 + 1 + 2 + 5 \div 5 + 6 - 7 $, then the result of the expression represented by this tree can be 63.
+\end{choices}
+
+
+\part[3] Choose the correct statement about heap using complete trees.
+\begin{choices}
+  \choice In the worst case, the time complexity of \texttt{Push} operation is $\Theta(n)$ if we do not use complete tree to implement a heap.
+  \choice  Usually \texttt{Push} operation takes $O(\log n)$ time.
+  \choice  Heap sort with a max-heap takes $\Theta(n \log n)$ time and is an in-place sorting algorithm.
+  \choice Merging two binary heaps of size n is a $\Theta(n)$ operation
+\end{choices}
+
+
+\part[3] Consider an AVL tree whose number of nodes is $n$ and height is $h$, which of the following are true?
+
+\begin{choices}
+  \choice Inserting or removing a node can increase the height of a tree by at most 1.
+  \choice An insertion on a perfect binary tree (which is also an AVL tree) can cause an imbalance.
+  \choice $h$ may equals to $\Theta(n)$ in worst case.
+  \choice $n= O(2^h)$
+\end{choices}
+
+\part[3] Choose the correct statement about binary search tree.
+
+\begin{choices}
+  \choice In a BST, the nodes in a subtree appear contiguously in the in-order traversal sequence of the BST.
+    \choice If we erase a node that has two children, then it can be replaced by the maximum object in its right subtree.
+    \choice There are 5 different  BSTs of a set with 3 distinct numbers.
+    \choice If a node doesn't have a right subtree, then its \textbf{next} (defined in lectures) object is the largest object (if any) that exists in the path from the node to the root.
+\end{choices}
+
+\end{parts}

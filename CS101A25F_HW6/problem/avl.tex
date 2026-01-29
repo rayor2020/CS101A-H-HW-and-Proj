@@ -1,0 +1,64 @@
+\titledquestion{AVL tree operations}
+
+Here is an AVL tree. Denote it as $T$.
+
+\begin{center}
+    \begin{tikzpicture}[]
+    \Tree
+    [.9
+        [.3
+            [.1
+                \edge[blank]; \node[blank]{};
+                [.2
+                ]
+            ]
+            [.7
+                [.5
+                    [.4
+                    ]
+                    [.6
+                    ]
+                ]
+                [.8
+                ]
+            ]
+        ]
+        [.12
+            [.11
+                [.10
+                ]
+                \edge[blank]; \node[blank]{};
+            ]
+            [.13
+            ]
+        ]
+    ]
+    \end{tikzpicture}
+\end{center}
+
+\begin{parts}
+
+\part[2] Insert $5.5$ into $T$. Draw the AVL tree before checking if any balance correction is needed.
+
+\vspace{6cm}
+
+
+\part[2] Insert $5.5$ into $T$. Draw the AVL tree after balance corrections.
+
+\vspace{7cm}
+
+\part[2] Remove $12$ from $T$ (\textbf{NOT from the previous answer!}). Draw the AVL tree after replacing and before checking if any balance correction is needed.
+
+\textbf{Note}: when erasing a non-leaf node $x$, we will follow the way in BST lecture slides to replace $x$ with
+\begin{itemize}
+    \item the child of $x$, if $x$ has exactly one child, or
+    \item the successor of $x$, if $x$  has two children
+\end{itemize}
+
+\vspace{6cm}
+
+\part[2] Remove $12$ from $T$. Draw the AVL tree after balance corrections.
+
+\vspace{6cm}
+
+\end{parts}
