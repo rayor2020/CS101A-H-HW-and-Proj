@@ -1,0 +1,2 @@
+C:\Strawberry\c\bin\ar.exe qc ..\..\lib\libGameWorld.a CMakeFiles/GameWorld.dir/GameWorld.cpp.obj
+C:\Strawberry\c\bin\ranlib.exe ..\..\lib\libGameWorld.a

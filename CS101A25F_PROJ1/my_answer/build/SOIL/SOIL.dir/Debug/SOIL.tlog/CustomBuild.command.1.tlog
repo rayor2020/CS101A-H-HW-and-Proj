@@ -1,0 +1,10 @@
+^D:\STU\大一\1\数据结构\CS101A25F_PROJ1 (1)\PROJ1\THIRD_PARTY\SOIL\CMAKELISTS.TXT
+setlocal
+"D:\Program Files\CMake\bin\cmake.exe" "-SD:/STU/大一/1/数据结构/CS101A25F_PROJ1 (1)/proj1" "-BD:/STU/大一/1/数据结构/CS101A25F_PROJ1 (1)/proj1/build" --check-stamp-file "D:/STU/大一/1/数据结构/CS101A25F_PROJ1 (1)/proj1/build/SOIL/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

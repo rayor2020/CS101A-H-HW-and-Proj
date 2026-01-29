@@ -1,0 +1,2 @@
+C:\Strawberry\c\bin\ar.exe qc ..\..\lib\libFramework.a CMakeFiles/Framework.dir/ObjectBase.cpp.obj CMakeFiles/Framework.dir/TextBase.cpp.obj CMakeFiles/Framework.dir/GameManager.cpp.obj CMakeFiles/Framework.dir/SpriteManager.cpp.obj
+C:\Strawberry\c\bin\ranlib.exe ..\..\lib\libFramework.a

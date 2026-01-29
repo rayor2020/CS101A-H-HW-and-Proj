@@ -1,0 +1,12 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/STU/\u5927\u4e00/1/\u6570\u636e\u7ed3\u6784/CS101A25F_PROJ1 (1)/proj1/build/cmake_install.cmake",
+		"D:/STU/\u5927\u4e00/1/\u6570\u636e\u7ed3\u6784/CS101A25F_PROJ1 (1)/proj1/build/SOIL/cmake_install.cmake",
+		"D:/STU/\u5927\u4e00/1/\u6570\u636e\u7ed3\u6784/CS101A25F_PROJ1 (1)/proj1/build/freeglut/cmake_install.cmake",
+		"D:/STU/\u5927\u4e00/1/\u6570\u636e\u7ed3\u6784/CS101A25F_PROJ1 (1)/proj1/build/src/Framework/cmake_install.cmake",
+		"D:/STU/\u5927\u4e00/1/\u6570\u636e\u7ed3\u6784/CS101A25F_PROJ1 (1)/proj1/build/src/GameObject/cmake_install.cmake",
+		"D:/STU/\u5927\u4e00/1/\u6570\u636e\u7ed3\u6784/CS101A25F_PROJ1 (1)/proj1/build/src/GameWorld/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

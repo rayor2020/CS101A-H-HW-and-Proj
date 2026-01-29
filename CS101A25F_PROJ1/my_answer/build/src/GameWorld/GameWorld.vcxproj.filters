@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\STU\大一\1\数据结构\CS101A25F_PROJ1 (1)\proj1\src\GameWorld\GameWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\STU\大一\1\数据结构\CS101A25F_PROJ1 (1)\proj1\src\GameWorld\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8B5B400C-968C-3D7D-9066-E2FEB98CCD9F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

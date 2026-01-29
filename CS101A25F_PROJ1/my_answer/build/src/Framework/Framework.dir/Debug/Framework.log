@@ -1,0 +1,17 @@
+﻿  GameManager.cpp
+D:\STU\大一\1\数据结构\CS101A25F_PROJ1 (1)\proj1\include\pvz\utils.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“../../../src/Framework/GameManager.cpp”)
+  
+D:\STU\大一\1\数据结构\CS101A25F_PROJ1 (1)\proj1\include\pvz\GameWorld\GameWorld.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“../../../src/Framework/GameManager.cpp”)
+  
+D:\STU\大一\1\数据结构\CS101A25F_PROJ1 (1)\proj1\include\pvz\Containers\SList.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“../../../src/Framework/GameManager.cpp”)
+  
+D:\STU\大一\1\数据结构\CS101A25F_PROJ1 (1)\proj1\include\pvz\GameObject\GameObject.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“../../../src/Framework/GameManager.cpp”)
+  
+D:\STU\大一\1\数据结构\CS101A25F_PROJ1 (1)\proj1\include\pvz\otherobjectshpp\Seed.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“../../../src/Framework/GameManager.cpp”)
+  
+  Framework.vcxproj -> D:\STU\大一\1\数据结构\CS101A25F_PROJ1 (1)\proj1\build\lib\Debug\Framework.lib

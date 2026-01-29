@@ -1,0 +1,20 @@
+SOIL/CMakeFiles/SOIL.dir/src/image_helper.c.obj: \
+ D:\Project\CS101A25F_PROJ1\proj1\third_party\SOIL\src\image_helper.c \
+ D:/Project/CS101A25F_PROJ1/proj1/third_party/SOIL/include/SOIL/image_helper.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/stdlib.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/corecrt.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/_mingw.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/_mingw_mac.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/_mingw_secapi.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/vadefs.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/corecrt_wstdlib.h \
+ C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/13.2.0/include/limits.h \
+ C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/13.2.0/include/syslimits.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/limits.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/crtdefs.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/sec_api/stdlib_s.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/malloc.h \
+ C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/13.2.0/include/mm_malloc.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/errno.h \
+ C:/Strawberry/c/x86_64-w64-mingw32/include/math.h
