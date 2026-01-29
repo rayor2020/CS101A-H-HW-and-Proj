@@ -1,0 +1,591 @@
+\documentclass[12pt]{article}
+% \documentclass[14pt]{extarticle}
+% --- Page & text block (wider) ---
+\usepackage[a4paper,margin=1.8cm,heightrounded]{geometry}
+\usepackage[UTF8]{ctex}
+% --- Fonts & micro-typography ---
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{xcolor}
+% --- Line spacing & paragraph style ---
+\usepackage{setspace}
+\setstretch{1.12}
+\usepackage{parskip}
+\setlength{\parskip}{0.5em}
+\usepackage{multicol}
+\usepackage{smile}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+% 可选参数控制宽度，默认为 2.4cm
+\newcommand{\ans}[1][2.4cm]{\fbox{\rule{0pt}{3.8ex}\hspace{#1}}}
+\newcommand{\anslong}[1][7cm]{\fbox{\rule{0pt}{3.8ex}\hspace{#1}}}
+\newcommand{\ansultra}[1][17cm]{\fbox{\rule{0pt}{20.8ex}\hspace{#1}}}
+
+
+% --- Lists ---
+\usepackage{enumitem}
+\setlist{leftmargin=*, itemsep=0.3em, topsep=0.4em}
+\setlist[itemize]{itemsep=0.2em, topsep=0.2em, parsep=0em}
+
+% --- Section spacing ---
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.0ex plus .5ex}{0.6ex}
+\titlespacing*{\subsection}{0pt}{0.8ex}{0.4ex}
+\titlespacing*{\subsubsection}{0pt}{0.6ex}{0.3ex}
+
+% --- Header/footer ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{CS101A(H) Week 4}
+\rhead{Array, Linked List, Stack, Queue, Hash Table, Asymptotic Analysis}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- Links ---
+\usepackage[hidelinks]{hyperref}
+\setlist[enumerate]{itemsep=0.2em, topsep=0.2em, parsep=0em}
+\usepackage{titling}
+\setlength{\droptitle}{-3em} 
+\begin{document}
+
+\title{CS101A(H) Homework 4}
+
+\date{}
+\vspace{-10em}
+\maketitle
+\vspace{-5em}
+\section*{Brief Overview}
+This homework consists of four parts:  
+
+\begin{itemize}
+  \item \textbf{Single Choices (10 pts):} \textit{Scoring per question:}
+  \begin{itemize}
+    \item Select the single correct option to receive full credit.
+    \item Any wrong selection, selecting multiple options, or leaving it blank receives \textbf{0 pt}.
+  \end{itemize}
+
+  \item \textbf{Multiple Choices (15 pts):} \textit{Scoring per question:}
+  \begin{itemize}
+    \item Selecting \emph{all and only} the correct options: \textbf{full credit}.
+    \item Selecting a \emph{proper subset} of the correct options (and \emph{no} incorrect options): \textbf{half credit}.
+    \item Selecting \emph{any} incorrect option or leaving it blank: \textbf{0 pt}.
+  \end{itemize}
+  \textit{Note:} If the correct set has only one option, the "half credit for a proper subset" case does not apply.
+
+  \item \textbf{Others (4+3+7+7+9 = 30 pts):} \textbf{Answers must be written in English}. The answer format varies by problem (e.g., short proofs, derivations, explanations, code snippets). The point value for each subproblem is printed next to the problem title. Follow the instructions given in each problem; show key steps when requested.
+  \item \textbf{Bonus (2 pts):} Some questions are marked "\textbf{bonus}". If answered correctly, you will earn the indicated extra points.
+\end{itemize}
+
+Your grade for this homework will be computed as
+\[
+\min\bigl(\text{Single Choices}+\text{Multiple Choices} + \text{Others},\; 50 \text{ pts}\bigr) + \text{Bonus}.
+\]
+
+\textbf{Notes: } \textbf{Unless otherwise stated, always express your final asymptotic bounds using} \(\boldsymbol{\Theta(\cdot)}\) \textbf{notation for tight complexity, not just} \(O(\cdot)\) \textbf{or} \(\Omega(\cdot)\).  
+All answers must be written \textbf{inside the provided answer boxes} and \textbf{in English}. When submitting, match your solutions to the problems correctly in Gradescope. No late submission will be accepted. Failure to follow these rule may result in partial or full loss of credit.
+
+
+
+\paragraph{Usage of AI.}
+The use of AI tools for searching information or obtaining assistance on this homework is strictly prohibited. All solutions must be derived from your own understanding and effort. Submissions will be reviewed carefully, and any indication of reliance on AI-generated content will result in severe penalties.
+
+\paragraph{Academic Integrity.}
+This course upholds the highest standards of academic integrity. Any form of academic dishonesty, including plagiarism, unauthorized collaboration, or the use of prohibited resources such as AI tools, will be treated as a serious violation. Such actions not only undermine your own learning but also violate university policies. 
+
+\paragraph{Due Date:} Oct 28, 2025, \textbf{8:00~PM}
+\newpage
+\section{Single Choices}
+\noindent\textbf{1. Which of the following statements about arrays and linked lists is \emph{correct}?}
+\begin{enumerate}[label=\Alph*.]
+  \item In a \textbf{singly linked list}, accessing the \(k\)-th element takes \(\Theta(1)\) time.
+  \item Inserting an element into the \emph{middle} of an \textbf{array} while preserving order takes \(\Theta(1)\) time.
+  \item Given only a pointer to a node in a \textbf{singly linked list}, we can \emph{always} delete that node in \(\Theta(1)\) time without changing any other node's contents.
+  \item Given a pointer to some node in a \textbf{non-circular doubly linked list}, we can reach every node by following \texttt{prev}/\texttt{next} in both directions.
+  \item \textbf{Arrays} and \textbf{singly linked lists} have the same asymptotic time for random access (\texttt{A[k]}).
+\end{enumerate}
+\noindent\textbf{2. Using a stack, evaluate the following Reverse Polish Notation (RPN) expression. What is the final result?}\\
+\texttt{8\ 3\ 4\ +\ 2\ \^{}\ *\ 5\ 1\ 2\ +\ 3\ \^{}\ -\ 6\ 2\ 3\ \^{}\ \%\ +\ +}
+\begin{multicols}{5}
+\begin{enumerate}[label=\Alph*.]
+  \item \(360\)
+  \item \(376\)
+  \item \(392\)
+  \item \(-16\)
+  \item \(400\)
+\end{enumerate}
+\end{multicols}
+\noindent\textbf{3. Queue-as-array with dynamic resizing}\\
+A queue uses an array \(\texttt{Q[N]}\) with initial \(N=8\) and the \emph{one-slot-empty} rule:
+\[
+\texttt{empty}\iff \texttt{front}=\texttt{rear},\qquad
+\texttt{full}\iff (\texttt{rear}+1)\bmod N=\texttt{front}.
+\]
+\textbf{Resize:} at any time when the queue is full, allocate size \(2N\), copy the logical order so that the old front becomes \(\texttt{Q'}[0]\), then set \(\texttt{front}=0,\ \texttt{rear}=\) (old size), \(N\leftarrow 2N\), finally place the new element at \(\texttt{Q'}[\texttt{rear}]\) and advance \(\texttt{rear}\).
+
+Initially:
+\[
+\texttt{front}=6,\quad \texttt{rear}=1,\quad N=8,
+\]
+and from front to \(\texttt{rear}-1\) the content is
+\[
+A\ (Q[6]),\ B\ (Q[7]),\ C\ (Q[0]).
+\]
+Do in order (assume no underflow):
+\[
+\texttt{push}(D),\ \texttt{push}(E),\ \texttt{pop}(),\ \texttt{push}(F),\ \texttt{push}(G),\ \texttt{push}(H),\ \texttt{push}(I),\ \texttt{pop}(),\ \texttt{push}(J),\ \texttt{push}(K).
+\]
+What is the final state (from front to \(\texttt{rear}-1\)) and indices?
+
+\begin{enumerate}[label=\Alph*.]
+  \item \(\texttt{front}=1,\ \texttt{rear}=10,\ N=16;\) content: \(C,\,D,\,E,\,F,\,G,\,H,\,I,\,J,\,K\).
+  \item \(\texttt{front}=8,\ \texttt{rear}=3,\ N=16;\) content: \(I,\,J,\,K\).
+  \item \(\texttt{front}=7,\ \texttt{rear}=2,\ N=16;\) content: \(B,\,C,\,D,\,E,\,F,\,G,\,H\).
+  \item \(\texttt{front}=0,\ \texttt{rear}=9,\ N=16;\) content: \(C,\,D,\,E,\,F,\,G,\,H,\,I,\,J,\,K\).
+\end{enumerate}
+
+\noindent\textbf{4. Hash Table.}\\
+Open addressing with \emph{linear probing}, table size \(m=13\), hash \(h(k)=k\bmod 13\).
+Deleted cells are marked \texttt{ERASED}; an \texttt{insert} probes \(h,h{+}1,\dots\) (mod \(m\)) and places the key at the first \texttt{ERASED} or \texttt{EMPTY} it encounters.
+
+Starting from an empty table, perform:
+\[
+\texttt{insert }18,31,44,57,70,83,24,37,13;\quad
+\texttt{erase }44,83;\quad
+\texttt{insert }96.
+\]
+
+After these operations, the table is:
+
+\[
+\begin{array}{c|ccccccccccccc}
+\text{index}   & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+\text{content} & 13 & \texttt{EMPTY} & \texttt{EMPTY} & \texttt{EMPTY} & \texttt{EMPTY} & 18 & 31 & 96 & 57 & 70 & \texttt{ERASED} & 24 & 37
+\end{array}
+\]
+
+\noindent If we now execute \(\texttt{insert}(5)\), at which \textbf{index} will 5 be placed?
+
+\begin{multicols}{5}
+\begin{enumerate}[label=\Alph*.]
+  \item \(0\)
+  \item \(1\)
+  \item \(5\)
+  \item \(10\)
+  \item \(12\)
+\end{enumerate}
+\end{multicols}
+
+
+\noindent\textbf{5. Which of the following is correct?}
+\begin{multicols}{2}
+   \begin{enumerate}[label=\Alph*.]
+  \item \(\log n = o\!\big(n^{0.0001}\big)\).
+  \item \(n\log n = o(n)\).
+  \item \(2^{\sqrt n} = o\!\big(n^{10}\big)\).
+  \item \(n^{\log\log n} = o\!\big((\log n)^{\log n}\big)\).
+  \item \(n! = o(2^n)\).
+\end{enumerate} 
+\end{multicols}
+
+
+\section{Multiple Choices}
+\noindent\textbf{1. Stack and Queue. Which of the following statements are correct?}
+\begin{enumerate}[label=\Alph*.]
+  \item A stack (LIFO) can be used to \emph{reverse} the order of a sequence by pushing all items and then popping them.
+  \item A queue (FIFO) can be used to reverse the order of a sequence by pushing all items and then popping them.
+  \item Using two stacks, we can implement a queue with \texttt{push} and \texttt{pop} operations whose \emph{amortized} time is \(\Theta(1)\) per operation.
+  \item Using two queues, we can implement a stack so that each \texttt{push} is \(\Theta(1)\) worst-case, but \texttt{pop} may be \(\Theta(n)\) in the worst case.
+  \item For both stacks and queues, accessing the \(k\)-th stored element is \(\Theta(1)\) time.
+\end{enumerate}
+
+
+\noindent\textbf{2.  Hash Table}\\
+Open addressing with \emph{double hashing}, table size \(M=17\). Primary hash \(h_1(k)=k\bmod 17\), secondary step \(h_2(k)=1+(k\bmod 16)\).\\
+\textbf{Insertion/search policy:} probe \(i_j=(h_1(k)+j\cdot h_2(k))\bmod M\) for \(j=0,1,\dots\). Use \emph{lazy erasing}: bins may be marked \texttt{ERASED}; when \textbf{searching}, treat \texttt{ERASED} as \emph{occupied} and continue and stop when it meets \texttt{EMPTY} or the matching key; when \textbf{inserting}, treat \texttt{ERASED} as \emph{unoccupied} (permitting placement). 
+
+After some operations, the table snapshot (index \(\to\) content) is:
+\[
+\begin{array}{c|ccccccccc}
+\text{index}   & 0 & 1 & 2 & 3 & 4 & 5        & 6  & 7        & 8 \\ \hline
+\text{content} & \texttt{EMPTY} & 18 & \texttt{EMPTY} & \texttt{EMPTY} & \texttt{EMPTY} & \texttt{ERASED} & 52 & \texttt{ERASED} & 86 \\
+\hline
+\text{index}   & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & {} \\ \hline
+\text{content} & 103 & 120 & 137 & \texttt{EMPTY} & \texttt{EMPTY} & \texttt{EMPTY} & \texttt{EMPTY} & \texttt{EMPTY} & {}
+\end{array}
+\]
+
+
+Which of the following are \emph{correct} under this snapshot and policy?
+\begin{enumerate}[label=\Alph*.]
+  \item  Key \(137\) must have been inserted \emph{after} key \(18\).
+  \item  It's possible that exactly one erase operation produced the two \texttt{ERASED} bins at indices \(5\) and \(7\).
+  \item  If we now insert a key \(y\) with \(h_1(y)=11\) and \(h_2(y)=1\), then \(y\) will be placed at index \(12\).
+  \item  There exists a key \(x\equiv 11\pmod{17}\) such that \(\texttt{search}(x)\) inspects exactly \(5\) bins on this snapshot.
+  \item  It is possible that key \(52\) was the very first key inserted into an initially empty table.
+\end{enumerate}
+
+\noindent\textbf{3. Which of the options for $T(n)$ share the same $\Theta$-asymptotic solution?}\\Assume $T(0)=T(1)=1$.
+\begin{enumerate}[label=\Alph*.]
+  \item $T(n)=2\,T(n/2)+\Theta(n)$
+  \item $T(n)=T(n-1)+n$
+  \item $T(n)=3\,T(n/3)+n$
+  \item $T(n)=T(n/2)+\Theta(n)$
+  \item $T(n)=4\,T(n/2)+\Theta(n^2)$
+\end{enumerate}
+
+
+
+\noindent\textbf{4. Asymptotics Analysis}\\
+Assume \texttt{op()} runs in constant time. Consider the following two procedures; their running times (as functions of input size \(n\)) are \(F(n)\) and \(G(n)\), respectively.
+\begin{verbatim}
+void AlgoF(int n){
+  op();                      
+  if (n % 2 == 0) {          
+    int r = ceil(sqrt(n));
+    for (int i = 0; i < n; ++i)          
+      for (int j = 0; j < r; ++j)        
+        op();                            
+  }
+}
+
+void AlgoG(int n){
+  int L = floor(log2(max(n,1)));
+  for (int i = 0; i < n; ++i)            
+    for (int t = 0; t < L; ++t)          
+      op();                              
+}
+\end{verbatim}
+
+Which of the following statements are true about \(F(n)\) and \(G(n)\)?
+\begin{enumerate}[label=\Alph*.]
+  \item \(F(n)=o(n^2)\).
+  \item \(F(n)=\Omega(n)\).
+  \item \(F(n)+G(n)=\Theta\!\big(n^{1.5}\big)\).
+  \item \(F(n)+G(n)=\omega\!\big(n\log(1.5n)\big)\).
+\end{enumerate}
+
+
+\noindent\textbf{5. Considering a hash table using open addressing, which of the following statements are correct?}
+
+\begin{enumerate}[label=\Alph*.]
+  \item If the table size \(m\) is prime. The hash function is $h_1(k)=k\bmod m$, and the step function is \(h_2(k)=1+(k\bmod (m-1))\). The probe sequence is $i_j=(h_1(k)+j \cdot h_2(k)) \bmod  m$ for $j=0,1,\ldots, m-1$. Then for any key, the probe sequence will visit every slot, unless it terminates early on \texttt{EMPTY}.
+
+  \item If the table size \(m\) is prime. The hash function is $h_1(k)=k\bmod m$, and the probe sequence is $i_j=(h_1(k)+\frac{1}{2}(j+j^2)) \bmod  m$ for $j=0,1,\ldots, m-1$. Then for any key, the probe sequence will visit every slot, unless it terminates early on \texttt{EMPTY}.
+
+  \item In linear probing, as an implementation of erasing an element, moving all successive elements forward one slot until meets an empty slot preserves the correctness of future searches; however, large load factor can degrade performance unless adaptively growth of hash table size is performed.
+  
+  \item In quadratic probing, as an implementation of erasing an element, using a special \texttt{ERASED} marker (distinct from \texttt{EMPTY}) preserves the correctness of future searches; however, excessive \texttt{ERASED} lables can degrade performance unless periodic rehashing is performed.
+\end{enumerate}
+
+
+\section{Array Representation of a Singly Linked List (4 pts)}
+We store a singly linked list in two arrays \texttt{value[]} and \texttt{next[]}. At index \(i\), the pair \((\texttt{value}[i], \texttt{next}[i])\) represents one node; \(\texttt{next}[i] = -1\) means tail. Let \texttt{head} be the index of the first node.
+
+\medskip
+\noindent\textbf{(a) From list (diagram) to arrays (fill numbers). (2 pts)}\\
+The diagram shows the logical order of nodes. Each box also shows the array index where the node is stored. Fill \(\texttt{head}\) and the entries of \(\texttt{next[]}\) below. Use \(-1\) for the tail. For indices with \textit{EMPTY} in \texttt{value[]}, write \texttt{--} in \(\texttt{next}\).
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, node distance=1cm, every node/.style={font=\small}]
+  \tikzstyle{nd}=[draw, rounded corners, align=center, minimum width=0.8cm, minimum height=0.45cm]
+  \node[nd] (A) {A\\\scriptsize @7};
+  \node[nd, right=of A] (C) {C\\\scriptsize @2};
+  \node[nd, right=of C] (F) {F\\\scriptsize @9};
+  \node[nd, right=of F] (B) {B\\\scriptsize @5};
+  \node[nd, right=of B] (E) {E\\\scriptsize @1};
+  \node[nd, right=of E] (D) {D\\\scriptsize @6};
+  \node[nd, right=of D] (G) {G\\\scriptsize @3};
+
+  \draw[->] (A) -- (C);
+  \draw[->] (C) -- (F);
+  \draw[->] (F) -- (B);
+  \draw[->] (B) -- (E);
+  \draw[->] (E) -- (D);
+  \draw[->] (D) -- (G);
+  \draw[-]  (G.east) -- ++(0.6,0);
+
+  \draw[->, thick] ([yshift=8pt]A.north west) -- ++(-0.9,0) node[left]{\texttt{head}};
+\end{tikzpicture}
+\end{center}
+
+Array capacity is \(10\) with indices \(0\sim9\). The \texttt{value[]} array is given; fill \texttt{head} and \texttt{next[]}:
+\[
+\begin{array}{c|cccccccccc}
+\text{index} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\ \hline
+\texttt{value} & \textit{EMPTY} & E & C & G & \textit{EMPTY} & B & D & A & \textit{EMPTY} & F\\
+\texttt{next}\ (\text{fill}) & \texttt{--} & \boxed{\phantom{00}} & \boxed{\phantom{00}} & \boxed{\phantom{00}} & \texttt{--} & \boxed{\phantom{00}} & \boxed{\phantom{00}} & \boxed{\phantom{00}} & \texttt{--} & \boxed{\phantom{00}}
+\end{array}
+\qquad
+\texttt{head}=\boxed{\phantom{00}}
+\]
+
+\medskip
+\noindent\textbf{(b) From arrays to list (draw the picture). (2 pts)}\\
+Consider another configuration (capacity \(10\)):
+\[
+\begin{array}{c|cccccccccc}
+\text{index} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\ \hline
+\texttt{value} & A & \textit{EMPTY} & C & \textit{EMPTY} & E & B & \textit{EMPTY} & G & \textit{EMPTY} & D\\
+\texttt{next}  & 9 & \texttt{--} & 0 & \texttt{--} & -1 & 4 & \texttt{--} & 2 & \texttt{--} & 5
+\end{array}
+\qquad
+\texttt{head}=7
+\]
+(i) Starting from \texttt{head}, draw the logical linked list (values in order with arrows).  
+(ii) Write the sequence of visited indices.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth, node distance=1cm]
+  \node[draw, rounded corners, minimum width=1.6cm, minimum height=0.9cm] (X1) { };
+  \node[draw, rounded corners, right=of X1, minimum width=1.6cm, minimum height=0.9cm] (X2) { };
+  \node[draw, rounded corners, right=of X2, minimum width=1.6cm, minimum height=0.9cm] (X3) { };
+  \node[draw, rounded corners, right=of X3, minimum width=1.6cm, minimum height=0.9cm] (X4) { };
+  \node[draw, rounded corners, right=of X4, minimum width=1.6cm, minimum height=0.9cm] (X5) { };
+  \node[draw, rounded corners, right=of X5, minimum width=1.6cm, minimum height=0.9cm] (X6) { };
+  \draw[->] (X1) -- (X2);
+  \draw[->] (X2) -- (X3);
+  \draw[->] (X3) -- (X4);
+  \draw[->] (X4) -- (X5);
+  \draw[->] (X5) -- (X6);
+\end{tikzpicture}
+\end{center}
+
+\section{Vocabulary List (3 pts)}
+
+We use a singly linked list:
+\begin{verbatim}
+struct Node {
+  std::string word;
+  Node* next;
+  Node(const std::string& w, Node* n=nullptr) : word(w), next(n) {}
+};
+\end{verbatim}
+All lists are non-empty. No extra containers; only pointer rewiring. Return the new head where applicable.
+
+\medskip
+\noindent\textbf{Move the two nodes after \texttt{p} to the front and return the new head, preserving order. (3 pts)}
+
+Complete \texttt{move\_two\_to\_first(Node* head, Node* p)}. You may assume \texttt{p->next} and \texttt{p->next->next} exist.
+
+\begin{verbatim}
+Node* move_two_to_first(Node* head, Node* p) {
+  Node* x = /* (1) */;
+  Node* y = /* (2) */;
+  p->next  = /* (3) */;
+  /* (4) */;
+  /* (5) */;
+  return /* (6) */;
+}
+\end{verbatim}
+
+Fill: \\
+(1) \anslong 
+(2) \anslong\\ 
+(3) \anslong 
+(4) \anslong\\ 
+(5) \anslong 
+(6) \anslong
+
+\section{Queues Implemented with Stacks (7 pts)}
+We have already studied queues and stacks in lecture. A beautiful aspect of algorithms is that one data structure can simulate another. In particular, a queue can be implemented using two stacks, preserving the FIFO behavior while using only LIFO operations. Implement a queue using two stacks as in lecture (Queue ADT with \texttt{push}/\texttt{pop}; Stack ADT with \texttt{push}/\texttt{pop}/\texttt{top}).  
+
+\medskip
+\noindent\textbf{(a) Complete the class with minimal blanks. (4 pts)}\\
+Fill the blanks \texttt{/*(1)*/}–\texttt{/*(4)*/}. Keep the style minimal and consistent with the slides.
+
+\begin{verbatim}
+#include <stack>
+#include <stdexcept>
+
+struct underflow {};  // as in slides
+
+template <typename Type>
+class TwoStackQueue {
+private:
+    std::stack<Type> inS, outS;
+    long long pop_count = 0;
+
+    void transfer_if_needed() {
+        if (/*(1)*/) {
+            while (/*(2)*/) {
+                Type v = /*(3)*/;
+                ++pop_count;                  
+                outS.push(v);
+            }
+        }
+    }
+
+public:
+    bool empty() const { return inS.empty() && outS.empty(); }
+
+    void push(Type const &obj) {
+        inS.push(obj); 
+        transfer_if_needed();
+    }
+
+    Type pop() {
+        if (empty()) { throw underflow(); }
+        Type v = /*(4)*/;
+        ++pop_count;    
+        transfer_if_needed();
+        return v;
+    }
+
+    long long pops() const { return pop_count; }
+};
+\end{verbatim}
+
+Fill: \\
+(1) \anslong 
+(2) \anslong\\ 
+(3) \anslong 
+(4) \anslong
+
+\medskip
+\noindent\textbf{(b) Worst-case and amortized bounds. (2 pts)}\\
+For \texttt{push} in \texttt{TwoStackQueue}, the worst-case time is \ans\ and the amortized time is \ans.  
+For \texttt{pop} in \texttt{TwoStackQueue}, the worst-case time is \ans\ and the amortized time is \ans.
+
+
+\medskip
+\noindent\textbf{(c)  Pop-count for a given sequence. (1 pt)}\\
+Starting from an empty queue, consider the operation sequence below (use your class from part (a)). Count the total number of internal \emph{stack} pops (both stacks combined), namely the value of \texttt{pop\_count}. Write only the final number.  \\
+\noindent\textbf{Operation sequence.}
+\begin{enumerate}
+  \item \texttt{push(1)}, \texttt{push(2)}, \texttt{push(3)}, \texttt{push(4)}, \texttt{push(5)}, \texttt{push(6)}, \texttt{push(7)}, \texttt{push(8)}.
+  \item \texttt{pop()}, \texttt{pop()}, \texttt{pop()}.
+  \item \texttt{push(9)}, \texttt{push(10)}, \texttt{push(11)}, \texttt{push(12)}.
+  \item \texttt{pop()}, \texttt{pop()}, \texttt{pop()}, \texttt{pop()}, \texttt{pop()}.
+  \item \texttt{push(13)}, \texttt{push(14)}, \texttt{push(15)}, \texttt{push(16)}.
+  \item \texttt{pop()}, \texttt{pop()}, \texttt{pop()}, \texttt{pop()}, \texttt{pop()}, \texttt{pop()}.
+\end{enumerate}
+ 
+Answer: \ans
+
+\section{Hash Table (7 pts)}
+
+Open addressing with \textbf{linear probing}. Table size \(m=11\). Hash function \(h(k)=k\bmod 11\).
+Lazy deletion is used: a deleted cell is marked \texttt{ERASED}; \texttt{find} keeps probing past \texttt{ERASED}, and \texttt{insert} may reuse the \emph{first} \texttt{ERASED} encountered on its probe.
+
+\subsection*{(a) Insert only (2 pts)}
+Starting from an empty table, perform in order:
+\[
+\texttt{insert }18,\ 44,\ 27,\ 59,\ 32,\ 31,\ 73.
+\]
+Fill the table after all inserts (write the key, or \texttt{EMPTY}). Use wrap-around when probing.
+
+\begin{center}
+\resizebox{\linewidth}{!}{$
+\setlength{\tabcolsep}{6pt}\renewcommand{\arraystretch}{1.1}\small
+\begin{tabular}{c|cccccc}
+index & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+cell  & \ans & \ans & \ans & \ans & \ans & \ans \\ \hline
+index & 6 & 7 & 8 & 9 & 10 \\ \hline
+cell  & \ans & \ans & \ans & \ans & \ans
+\end{tabular}
+$}
+\end{center}
+
+\subsection*{(b) Apply deletions (2 pts)}
+From your table in (a), delete the keys \(44\) and \(31\). Mark their slots as \texttt{ERASED} (do not move other keys). Fill the table.
+
+\begin{center}
+\resizebox{\linewidth}{!}{$
+\setlength{\tabcolsep}{6pt}\renewcommand{\arraystretch}{1.1}\small
+\begin{tabular}{c|cccccc}
+index & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+cell  & \ans & \ans & \ans & \ans & \ans & \ans \\ \hline
+index & 6 & 7 & 8 & 9 & 10 \\ \hline
+cell  & \ans & \ans & \ans & \ans & \ans
+\end{tabular}
+$}
+\end{center}
+
+\subsection*{(c) Insert with lazy deletion and one \texttt{find} (3 pts)}
+Continuing from (b), perform:
+\[
+\texttt{insert }24,\ \texttt{insert }35.
+\]
+Remember: on \texttt{insert}, reuse the \emph{first} \texttt{ERASED} encountered along the probe. Then:
+
+\begin{enumerate}
+  \item Fill the final table (after the two inserts).
+  \item Give the exact number of inspected slots when calling \(\texttt{find}(35)\) on the final table
+  (count each slot read during the probe until the key is found or an \texttt{EMPTY} is seen).
+\end{enumerate}
+
+\begin{center}
+\resizebox{\linewidth}{!}{$
+\setlength{\tabcolsep}{6pt}\renewcommand{\arraystretch}{1.1}\small
+\begin{tabular}{c|cccccc}
+index & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+cell  & \ans & \ans & \ans & \ans & \ans & \ans \\ \hline
+index & 6 & 7 & 8 & 9 & 10 \\ \hline
+cell  & \ans & \ans & \ans & \ans & \ans
+\end{tabular}
+
+\medskip
+
+$}
+\end{center}
+Inspections for \texttt{find(35)}: \ans
+
+
+
+\section{Asymptotics Analysis (9 pts)}
+
+Unless otherwise stated, assume all functions are nonnegative for sufficiently large \(n\).
+You may use standard limit rules, L'Hospital's rule when applicable, and elementary series facts.
+Do not invoke Master Theorem.
+
+\noindent \textbf{(a)} Prove \(n^3 = O(n^4)\) using a limit-based argument. Show the key limit and state the conclusion clearly. \textbf{(1 pts)}
+\[
+\fbox{\rule{0pt}{13.8ex}\hspace{17cm}}
+\]
+\noindent \textbf{(b)} Find an \(f(n),g(n)\ge 0\) such that \(f(n)=O(g(n))\) yet \(\lim_{n\to\infty}\frac{f(n)}{g(n)}\neq 0\). 
+Provide a concrete pair example and a one-line justification. What's the case when \(f(n),g(n)\ge 0\) such that \(f(n)=O(g(n))\) yet \(\lim_{n\to\infty}\frac{f(n)}{g(n)}\) doen't exist? Also provide a concrete pair example  and a one-line justification. \textbf{(2 pts)} \emph{Hint: think about oscillating functions!}
+\[
+\ansultra
+\]
+
+\noindent \textbf{(c)} Order the functions \(f_1,\dots,f_9\) from smaller to larger asymptotic growth so that if \(f_i\) appears before \(f_j\), then \(f_i=O(f_j)\).
+Write only the order as a list like \(f_8,f_9,\dots\). No justification is required. \textbf{(2 pts)}
+\[
+\begin{aligned}
+&f_1(n)=3^n,\quad f_2(n)=n^{1/3},\quad f_3(n)=12,\quad f_4(n)=2^{\log_2 n},\\
+&f_5(n)=\sqrt{n},\quad f_6(n)=2^{n},\quad f_7(n)=\log_2 n,\quad f_8(n)=2^{\sqrt{n}},\quad f_9(n)=n^{3}.
+\end{aligned}
+\]
+\ansultra
+
+\noindent \textbf{(d)} For each pair, indicate \(O\), \(\Omega\), or \(\Theta\) for $f(n)= ?(g(n))$. Show the key limit and state the conclusion clearly. \textbf{(2 pts)}
+\[
+\begin{array}{lcl}
+\text{(i)}\; f(n)=\log_3 n,\; g(n)=\log_4 n \qquad \text{(ii)}\; f(n)=n\log(n^{4}),\; g(n)=n^{2}\log(n^{3}) \\
+\text{(iii)}\; f(n)=\sqrt{n},\; g(n)=(\log n)^{3} \qquad 
+\text{(iv)}\; f(n)=n+\log n,\; g(n)=n+(\log n)^{2}
+\end{array}
+\]
+\fbox{\rule{0pt}{35.8ex}\hspace{17cm}}
+\\
+For the below questions, assume \(T(0)=T(1)=1\) unless otherwise noted. Derive a  \(\Theta(\cdot)\) bound for $T(n)$. Clearly write down your answers and the process.
+
+\noindent \textbf{(e)}  \(T(n)=3\,T(n-2)+5\) \textbf{(1 pts)}
+\[
+\ansultra
+\]
+
+\noindent \textbf{(f)} \(T(n)=3\,T(n^{1/3})+\Theta(\log n)\) \textbf{(1 pts)}
+\[
+\ansultra
+\]
+
+\noindent \textbf{(bonus)}  \(T(n)=T(n-1)+T(n-2)\) \textbf{(2 pts)}
+\[
+\ansultra
+\]
+
+\end{document}
