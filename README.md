@@ -102,7 +102,7 @@ g++ -std=c++17 src/main.cpp -o hw1 && ./hw1
 
 ---
 
-> ✨ **本仓库已解归档，代码可正常访问**  
+> ✨ **本仓库已归档，代码可正常访问**  
 > **⚠️ 请严格遵守学术诚信要求，独立完成作业！**  
 > **仓库地址**：[https://github.com/rayor2020/CS101A-H-HW-and-Proj](https://github.com/rayor2020/CS101A-H-HW-and-Proj)
 
